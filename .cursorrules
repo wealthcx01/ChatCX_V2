@@ -1,0 +1,36 @@
+# LibreChat Development Guidelines
+
+You are working with LibreChat, an open-source AI chat platform.
+
+## Key Points
+- Uses Docker Compose for local development
+- Configuration via librechat.yaml file
+- MCP servers connect via SSE or streamable-http
+- Environment variables stored in .env file
+- Always restart Docker containers after config changes
+
+## When Making Changes
+
+1. **Validate YAML syntax** - Use proper YAML formatting and validate before applying
+2. **Check Docker logs for errors** - Monitor container logs for configuration issues
+3. **Test MCP connections after configuration** - Verify MCP server connections work properly
+4. **Use proper indentation** - Use spaces, not tabs, for YAML files
+
+## Development Workflow
+
+- Use `docker compose down` before making config changes
+- Use `docker compose up` to restart with new configuration
+- Monitor logs with `docker compose logs -f` for real-time debugging
+- Test MCP server connections in the LibreChat interface after configuration
+
+## File Structure
+- `librechat.yaml` - Main configuration file
+- `.env` - Environment variables
+- `docker-compose.yml` - Docker services configuration
+- `docker-compose.override.yml` - Local overrides for Docker setup
+
+## MCP Server Configuration
+- Configure MCP servers in `librechat.yaml`
+- Support both STDIO and Streamable HTTP transports
+- Use proper authentication headers for multi-user environments
+- Restart LibreChat after MCP configuration changes
